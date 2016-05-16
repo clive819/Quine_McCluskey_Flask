@@ -32,7 +32,6 @@ Scrapy==1.0.3
 service-identity==14.0.0
 six==1.10.0
 tqdm==1.0
-vboxapi==1.0
 virtualenv==13.1.2
 w3lib==1.13.0
 Werkzeug==0.11.9
