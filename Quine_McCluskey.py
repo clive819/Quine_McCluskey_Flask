@@ -10,6 +10,14 @@ def main(num, minterms):
         for j in range(num):
             f[0][i][num - 1 - j] = minterms[i] % 2
             minterms[i] /= 2
+    if len(minterms) == 1:
+        str = 'f = '
+        for j in range(num):
+            if f[0][0][j] == 0:
+                str += '%s\'' % chr(j + 65)
+            elif f[0][0][j] == 1:
+                str += '%s' % chr(j + 65)
+        return str
     for i in range(1, len(minterms)):
         count = 0
         for j in range(rrange[i - 1]):
@@ -55,8 +63,12 @@ def main(num, minterms):
 
 @app.route('/<num>/<minterms>')
 def function(num, minterms):
+    num = int(num.encode('utf8'))
     minterms = [int(i) for i in minterms.encode('utf8').split(',')]
-    return main(int(num.encode('utf8')), tuple(minterms))
+    for i in tuple(minterms):
+        if i > 2**num:
+            return 'Input Error!'
+    return main(num, tuple(minterms))
 
 
 @app.route("/")
