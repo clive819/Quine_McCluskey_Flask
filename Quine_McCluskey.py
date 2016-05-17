@@ -1,4 +1,4 @@
-from flask import Flask, request
+from flask import Flask
 app = Flask(__name__)
 
 def main(num, minterms):
@@ -59,6 +59,8 @@ def main(num, minterms):
                 elif result[i][j] == 1:
                     str += '%s' % chr(j + 65)
             c += 1
+    if c==0:
+        return 'f = 1'
     return str
 
 @app.route('/<num>/<minterms>')
