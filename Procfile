@@ -1,0 +1,1 @@
+web: gunicorn Quine_McCluskey:app
