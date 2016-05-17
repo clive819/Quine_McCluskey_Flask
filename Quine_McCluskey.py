@@ -66,7 +66,7 @@ def function(num, minterms):
     num = int(num.encode('utf8'))
     minterms = [int(i) for i in minterms.encode('utf8').split(',')]
     for i in tuple(minterms):
-        if i > 2**num:
+        if i >= 2**num:
             return 'Input Error!'
     return main(num, tuple(minterms))
 
